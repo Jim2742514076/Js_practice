@@ -1,0 +1,38 @@
+<!--
+ * @FilePath: \Js_practice\02day\简易计算器.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-27 11:14:28
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易计算器</title>
+</head>
+<body>
+    <script>
+        let num1 = +prompt('输入数据1:')
+        let ca = prompt('输入运算符:')
+        let num2 = +prompt('输入数据2:')
+        switch (ca) {
+            case '+':
+                alert(num1 + num2)
+                break
+            case '-':
+                alert(num1 - num2)
+                break
+            case '*':
+                alert(num1 * num2)
+                break
+            case "/":
+                alert(num1 / num2)
+                break
+            default:
+                alert("输入正确的运算符")
+        }
+    </script>
+</body>
+</html>

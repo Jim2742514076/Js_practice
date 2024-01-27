@@ -1,0 +1,47 @@
+<!--
+ * @FilePath: \Js_practice\02day\09-小星星打印.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-27 15:26:35
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小星星打印</title>
+    <style>
+        span{
+            display: inline_block;
+            border: 1px solid pink;
+            padding: 2px;
+            margin: 10px;
+        }
+    </style>
+    
+</head>
+<body>
+    <script>
+
+        for(let i=0;i<=5;i++) {
+            for(let j=0;j<=5;j++) {
+                document.write("*")
+            }
+            document.write(`<br>`)
+        }
+
+        for(let i=1;i<=9;i++) {
+            for(let j=1;j<=9;j++){
+                if(i>=j){
+                    document.write(`<span>${i}*${j}=${i*j}</span>`)
+                }else{
+                    break
+                }
+            }
+            document.write(`<br>`)
+        }
+
+    </script>
+</body>
+</html>

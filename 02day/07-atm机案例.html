@@ -1,0 +1,54 @@
+<!--
+ * @FilePath: \Js_practice\02day\07-atm机案例.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-27 14:43:57
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atm机</title>
+</head>
+<body>
+    <script>
+
+        
+        let money = 0
+        let xunhuan = 1
+        while(xunhuan) {
+            
+            let judge = +prompt(`请选择操作:
+                                1.存钱
+                                2.取钱
+                                3.查看余额
+                                4.退出`)
+            switch(judge){
+                case 1:
+                    let save_money = +prompt("存入金额:")
+                    money = money + save_money
+                    break
+                case 2:
+                    let get_money = +prompt("取出金额")
+                    if(get_money <= money){
+                        money = money - get_money
+                        break
+                    }
+                    else{
+                        alert("余额不足，无法取出")
+                        break
+                    }
+                case 3:
+                    alert(`余额为${money}`)
+                    break
+                default:
+                    xunhuan = 0
+            }
+
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!--
+ * @FilePath: \Js_practice\01day\06-day1实战作业.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-26 20:21:12
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>商品订单加载</title>
+    <script src="../layui/layui.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+
+</head>
+<body>
+    <style>
+       th { 
+        text-align: center;
+    }
+    </style>
+    <script>
+        let price = prompt("请输入价格：")
+        let num = prompt("请输入数量：")
+        let address = prompt("请输入地址：")
+        let total = Number(price) * Number(num)
+        document.write(`
+        <h1 style="text-align: center;">订单确认</h1>
+        <table class="layui-table" lay-size="lg">
+            <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>商品价格</th>
+                <th>商品数量</th>
+                <th>总价</th>
+                <th>收获地址</th>
+            </tr> 
+            </thead>
+            <tbody>
+            <tr>
+                <td>小米手机</td>
+                <td>${price}元</td>
+                <td>${num}</td>
+                <td>${total}元</td>
+                <td>${address}</td>
+            </tr>
+            </tbody>
+        </table>
+        `)
+    </script>
+</body>
+</html>

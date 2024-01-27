@@ -1,0 +1,33 @@
+<!--
+ * @FilePath: \Js_practice\02day\06-累加和计算.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-27 14:35:57
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>累加和计算</title>
+</head>
+<body>
+    <script>
+        let num = 0
+        let i = 1
+        let total = 0
+        while(i<=100){
+            num = num + i
+            i++
+            if(i%2===0){
+                total = total + i
+            }
+        }
+        document.write(`<h2>累计和为${num}</h2>`)
+        document.write(`<h2>累计偶数和为${total}</h2>`)
+        
+
+    </script>
+</body>
+</html>

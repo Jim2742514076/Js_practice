@@ -1,0 +1,74 @@
+<!--
+ * @FilePath: \Js_practice\02day\12-柱状图渲染.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-27 16:49:19
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柱状图渲染</title>
+    <script src="../js/echarts.min.js"></script>
+</head>
+<body>
+
+    <div id="main" style="width: 600px;height:400px;align-self: center;"></div>
+    <script type="text/javascript">
+
+        let arr = []
+        for(i=1;i<=7;i++) {
+            xiaoliang = +prompt("输入销量:")
+            arr.push(xiaoliang)
+        }
+
+        // var arr = [10, 52, 200, 334, 390, 330, 220]
+
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+        color: '#fac858',
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+            type: 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick: {
+                alignWithLabel: true
+            }
+            }
+        ],
+        yAxis: [
+            {
+            type: 'value'
+            }
+        ],
+        series: [
+            {
+            name: 'Direct',
+            type: 'bar',
+            barWidth: '60%',
+            data:arr
+            }
+        ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+</body>
+</html>

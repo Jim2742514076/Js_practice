@@ -1,0 +1,27 @@
+<!--
+ * @FilePath: \Js_practice\02day\11-数组元素筛选.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-27 16:25:36
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组元素筛选</title>
+</head>
+<body>
+    <script>
+        let arr = [2,0,6,1,77,0,52,0,25,7]
+        let new_arr = []
+        for(i=0;i<arr.length;i++){
+            if(arr[i]>=10){
+                new_arr.push(arr[i])
+            }
+        }
+        document.write(new_arr)
+    </script>
+</body>
+</html>
