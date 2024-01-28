@@ -1,0 +1,44 @@
+<!--
+ * @FilePath: \Js_practice\04web_api\02-年会抽奖案例.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-28 19:50:25
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年会抽奖案例</title>
+    <script src="../js/外部js.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <strong>年会抽奖</strong>
+        <h1>一等奖<span id="one"></span></h1>
+        <h2>二等奖<span id="two"></span></h2>
+        <h3>三等奖<span id="three"></span></h3>
+    </div>
+    <script>
+        let arr = ["刘德华","周星驰","张学友","黎明","郭富城","古天乐"]
+        const first = document.querySelector("h1 span")
+        const second = document.querySelector("h2 span")
+        const third = document.querySelector("h3 span#three")
+        let index = get_random(0,arr.length-1)
+        first.innerHTML = arr[index]
+        arr.splice(index,1)
+        console.log(index)
+        index = get_random(0,arr.length-1)
+        second.innerHTML = arr[index]
+        console.log(index)
+        arr.splice(index,1)
+        index = get_random(0,arr.length-1)
+        third.innerHTML = arr[index]
+        console.log(index)
+    </script>
+
+    
+
+</body>
+</html>

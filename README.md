@@ -48,7 +48,7 @@ typeof(age)
 
 ## 类型转换
 **隐式转换**
-![Alt text](./md/image.png)
+![Alt text](./md/隐式转换.png)
 **显式转换**
 ```javascript
 let age = "18"
@@ -266,6 +266,86 @@ Math.PI
 ```javascript
 Math.floor(Math.random()*(m-n+1))+n
 ```
+
+## web Api
+![Alt text](./md/web_api.png)
+
+## dom
+### dom 树
+![Alt text](./md/dom树.png)
+### dom对象
+![Alt text](./md/dom对象.png)
+
+### dom对象获取
+css选择器获取对象
+```javascript
+// 选择匹配第一个元素，返回值为对象
+document.querySelector("css选择器")
+// 例子
+// 容器
+document.querySelector("div")
+// class
+document.querySelector(".main")
+// id
+document.querySelector("#id")
+// 嵌套
+document.querySelector("ul li:first-child")
+
+// 选择匹配全部元素，返回值为对象数组
+document.querySelectorAll("css选择器")
+
+```
+其他获取方式
+![Alt text](./md/dom元素获取.png)
+
+## 操作元素内容
+### 对象.innerText
+只识别文本内容，不解析标签
+
+### 对象.innerHTML
+不仅可以识别文本内容，还会解析标签
+
+## 操作元素属性
+### 常用属性操作
+![Alt text](./md/操作元素常用属性.png)
+
+### 样式属性操作
+#### 操作样式修改css
+对于如background-color 带分隔符的属性用小驼峰命名法获取属性
+```javascript
+const bgColor = document.querySelector("div")
+bgColor.backgroundColor = "pink"
+```
+#### 操作类名修改css
+![Alt text](./md/操作类名.png)
+```javascript
+<div class="wrapper">
+        <strong>年会抽奖</strong>
+        <h1>一等奖<span id="one"></span></h1>
+        <h2>二等奖<span id="two"></span></h2>
+        <h3>三等奖<span id="three"></span></h3>
+</div>
+<style>
+        .wrapper {
+            height: 500px;
+            width: 600px;
+        }
+        .newClass{
+            height: 300px;
+            width: 500px;
+            background: #000;
+        }
+</style>
+<script>
+        const div = document.querySelector("div.wrapper")
+        {/* 修改新类名 */}
+        div.className = "newClass"
+        {/* 保留旧类名 */}
+        div.className = 'wrapper newClass'
+</script>
+```
+#### 通过classList操作css
+![Alt text](./md/classlist操作css.png)
 
 
 
