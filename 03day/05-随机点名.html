@@ -1,0 +1,37 @@
+<!--
+ * @FilePath: \Js_practice\03day\05-随机点名.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-28 15:35:42
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机点名</title>
+</head>
+<body>
+    <script>
+        let arr = ["赵云","黄忠","马超","关羽","刘备","曹操"]
+        function get_random(m,n){
+            return Math.floor(Math.random()*(m-n+1))+n
+        }
+        let judge = 1
+        while(judge){
+            arr_random = get_random(0,arr.length-1)
+            alert(`${arr[arr_random]}`)
+            arr.splice(arr_random,1)
+            judge ++
+            if(judge>3){
+                break
+            }
+        }
+        
+        document.write(`<h2>${arr[arr_random]}</h2>`)
+        document.write(`<h2>${arr}</h2>`)
+
+    </script>
+</body>
+</html>

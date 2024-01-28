@@ -48,7 +48,7 @@ typeof(age)
 
 ## 类型转换
 **隐式转换**
-![Alt text](../md/image.png)
+![Alt text](./md/image.png)
 **显式转换**
 ```javascript
 let age = "18"
@@ -182,3 +182,90 @@ function add(){
     alert("这是一个函数")
 }
 ```
+
+
+## 作用域
+### 全局作用域
+在script中声明的变量
+### 局部作用域
+在函数中声明的局部变量
+**for循环中的i,j...为局部变量，不能直接访问**
+```javascript
+for(i=1;i<10;i++){
+    console.log("局部作用域测试")
+}
+// 循环结束后，i无法在script中直接访问出10
+```
+
+
+## 匿名函数
+用函数表达式的方式构建，区别与具名函数，`不存在函数名`
+```javascript
+let fn = function(参数){
+    函数体
+} 
+
+// 例子
+let fn = function(){
+    console.log("匿名函数测试")
+}
+```
+## 立即执行函数
+当同事使用两个立即执行函数时，需要用";"进行分隔
+```javascript
+// 非同时两个立即执行函数无需使用';'进行分隔
+(function(){alert("测试立即执行函数")})()
+alert("分隔测试")
+// 两个立即执行函数需要使用";"进行分隔
+(function(){alert("测试立即执行函数")})()；
+(function(){alert("测试立即执行函数")})()
+```
+
+## 对象
+```javascript
+// 对象构造
+let 对象 = {
+    属性名:属性值，
+    方法名:函数
+}
+
+// 增删改查
+// 增加
+对象名.新属性 = 属性值
+// 修改
+对象名.属性 = 新属性值
+// 删除
+delete 对象名.属性
+// 查找
+对象名.属性
+对象名["属性"]
+
+// 对象遍历
+let obj = {
+    name:"jeck",
+    age:18,
+    gender:"man"
+}
+for(key in obj){
+    console.log(obj[key])
+}
+// 遍历出来的值是带引号的字符串，因此不能用**.属性**进行获取值
+```
+
+## 内置对象
+ [数学函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math)
+```javascript
+// 四舍五入
+Math.round()
+// π
+Math.PI
+```
+
+## 随机数
+生成m，n之间的随机整数
+```javascript
+Math.floor(Math.random()*(m-n+1))+n
+```
+
+
+

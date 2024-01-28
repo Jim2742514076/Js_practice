@@ -1,0 +1,39 @@
+<!--
+ * @FilePath: \Js_practice\03day\04-转换时间案例.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-28 11:08:26
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间转换案例</title>
+</head>
+<body>
+    <script>
+        
+        time_input = +prompt('输入时间，单位为s')
+        function change_time(time){
+            let hour,minute,second
+            let time_lst = []
+            hour = (time - time % 3600) / 3600
+            minute = ((time - 3600*hour) - (time - 3600*hour)%60)/60
+            second = time - 3600*hour - 60*minute
+            time_lst.push(hour,minute,second)
+            return time_lst
+            // console.log(hour,minute,second)
+        }
+        function add_zero(num){
+            num<10?num="0"+num:num
+            return num
+        }
+        time_lst = change_time(time_input)
+
+        document.write(`${time_input}是${add_zero(time_lst[0])}时${add_zero(time_lst[1])}分${add_zero(time_lst[2])}秒`)
+
+    </script>
+</body>
+</html>

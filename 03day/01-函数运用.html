@@ -1,0 +1,55 @@
+<!--
+ * @FilePath: \Js_practice\03day\01-函数运用.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-28 09:44:37
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数求数组最大值并返回</title>
+</head>
+<body>
+    <script>
+        function max_return(arr=[]){
+
+            let tmp = arr[0]
+            for(let i=1; i<arr.length-1; i++){
+                tmp > arr[i]? tmp=tmp:tmp = arr[i];
+            }
+            return tmp
+        }
+        
+        function min_return(arr=[]){
+            let tmp = arr[0]
+            for(let i=1;i<=arr.length-1;i++){
+                tmp<arr[i]? tmp=tmp:tmp = arr[i];
+            }
+            return tmp
+        }
+
+        function sort_return(arr=[]){
+            for(let i=0;i<=arr.length-1;i++){
+                tmp = arr[i]
+                for(let j=i+1;j<=arr.length-1;j++){
+                    if(tmp>arr[j]){
+                        tmp=arr[j]
+                        arr[j]= arr[i]
+                        arr[i] = tmp
+                    }
+                }
+            }
+            return arr
+        }
+
+        let arr = [5,8,9,6,8]
+        console.log(max_return(arr=arr))
+        console.log(min_return(arr))
+        console.log(sort_return(arr))
+        
+    </script>
+</body>
+</html>

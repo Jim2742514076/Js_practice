@@ -1,0 +1,48 @@
+<!--
+ * @FilePath: \Js_practice\03day\07-随机颜色生成.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-28 16:19:02
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机颜色生成</title>
+    <script src="../js/外部js.js"></script>
+</head>
+<body>
+
+    <div id="main" style="align-self: start; width: 500px;height: 300px; background-color: pink;"></div>
+        <script>
+            
+            function get_random_color(flag = 1) {
+
+                if(flag){
+                    let r = get_random(0,255)
+                    let g = get_random(0,255)
+                    let b = get_random(0,255)
+                    return `rgb(${r},${g},${b})`
+                }else{
+                    let arr = ["0","1","2","3","4","5","6","7","8","9",
+                                "a","b","c","d","e","f"]
+                    str = "#"
+                    for(let i = 0; i < 6; i++){
+                        index = get_random(0,arr.length-1)
+                        str = str + arr[index]
+                    }
+                    return str
+                }
+
+            }
+
+            console.log(get_random_color())
+            console.log(get_random_color(0))
+            // for(let i = 0; i <10; i++) {
+                document.getElementById("main").style.backgroundColor = get_random_color()
+            // }
+        </script>
+</body>
+</html>
