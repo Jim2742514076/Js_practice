@@ -1,0 +1,30 @@
+<!--
+ * @FilePath: \Js_practice\04web_api\05-自定义属性.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-29 11:24:29
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义属性</title>
+</head>
+<body>
+    <div data-id="1" data-sm="hello" data-la="world"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        const dataId = document.querySelector("div")
+        console.log(dataId.dataset)
+        for (key in dataId.dataset){
+            console.log(dataId.dataset[key])
+        }
+    </script>
+</body>
+</html>

@@ -347,5 +347,33 @@ bgColor.backgroundColor = "pink"
 #### 通过classList操作css
 ![Alt text](./md/classlist操作css.png)
 
+### 操作表单属性
+#### 表单内容获取
+```javascript
+// 表单内容获取
+const form = document.querySelector("input")
+const value = form.value
 
+// 按钮禁用
+const buttom = document.querySelector("buttom")
+const buttom.disabled = true
 
+// 复选框选中
+const check = document.querySelector(".checked")
+const check.checked = true
+```
+### 自定义属性
+![Alt text](./md/自定义属性.png)
+
+## 定时器
+### 开启定时器
+```javascript
+let n = setInterval(函数名,间隔时间)
+// 间隔时间单位是毫秒
+// 函数不加小括号
+// 有一个返回值
+```
+### 关闭定时器
+```javascript
+clearInterval(n)
+```
