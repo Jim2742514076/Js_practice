@@ -1,0 +1,24 @@
+<!--
+ * @FilePath: \Js_practice\04web_api\07-事件监听例子.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-29 19:06:18
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件监听</title>
+</head>
+<body>
+    <button id="btn">事件监听</button>
+    <script>
+        const btn = document.querySelector("#btn")
+        btn.addEventListener("click", function(){
+            alert("事件监听")
+        })
+    </script>
+</body>
+</html>

@@ -377,3 +377,19 @@ let n = setInterval(函数名,间隔时间)
 ```javascript
 clearInterval(n)
 ```
+
+## 事件监听
+```javascript
+对象元素.addEventListener("事件类型",执行函数)
+// 事件源
+// 事件类型：触发方式，比如鼠标单击click
+click:鼠标点击
+mouseenter:鼠标经过
+mouseleave:鼠标离开
+focus:获得焦点
+blur:失去焦点
+keydown:键盘按下触发
+keyup:键盘抬起触发
+input:用户输入事件
+// 函数调用
+```
