@@ -363,6 +363,15 @@ const check = document.querySelector(".checked")
 const check.checked = true
 ```
 ### 自定义属性
+自定义属性一律用`data-`开头
+自定义属性的一律以`dataset`对象方式获取
+```javascript
+    <div class="box" data-id="10">盒子</div>
+    <script>
+        const box = document.querySelector('.box')
+        console.log(box.dataset.id)
+    </script>
+```
 ![Alt text](./md/自定义属性.png)
 
 ## 定时器
@@ -383,13 +392,145 @@ clearInterval(n)
 对象元素.addEventListener("事件类型",执行函数)
 // 事件源
 // 事件类型：触发方式，比如鼠标单击click
+// 函数调用
+
+// 鼠标事件
 click:鼠标点击
+// 两种鼠标经过/离开事件没有冒泡效果
 mouseenter:鼠标经过
 mouseleave:鼠标离开
+// 两种鼠标经过/离开事件有冒泡效果
+mouseover:鼠标经过
+mouseout:鼠标离开
+
+// 表单事件
 focus:获得焦点
 blur:失去焦点
+
+// 键盘事件
 keydown:键盘按下触发
 keyup:键盘抬起触发
+
+// 输入事件
 input:用户输入事件
-// 函数调用
 ```
+
+## 事件对象
+对象里有事件触发时的相关信息
+在事件绑定的回调函数里第一个参数，命名为`event`、`ev`、`e`
+```javascript
+元素.addEventListener("事件类型",function(e){
+    执行语句
+})
+```
+### 获取事件属性
+```javascript
+type:获取当前事件类型
+clientX/clientY:获取光标相当于浏览器可见窗口左上角的位置
+offerX/offerY:获取光标相当于当前dom元素左上角的位置
+key:用户按下的键盘键的值
+```
+去除字符串左右两侧空格函数`trim()`
+
+## 环境对象
+指代函数内部的变量`this`，表示函数运行时所处的环境
+**调用规则**：谁调用函数，this指向谁
+
+## 回调函数
+将函数A作为参数传递给函数B，称为函数A为回调函数
+
+## 事件流
+事件执行的完整执行过程中的流动路径
+包括两个阶段**事件捕获**和**事件冒泡**
+**事件捕获**：先调用父元素，再调用子元素
+**事件冒泡**：当一个元素触发事件之后，会依次向上调用所有父级元素的同名事件(从子到父)`事件触发默认为事件冒泡`
+```javascript
+   <div class="father" style="width: 500px; height: 250px; background-color: pink;">
+        <div class="son" style="width: 100px; height: 100px; background-color: blue;"></div>
+    </div>
+    <script>
+        document.addEventListener("click", function(){
+            alert("grandfather")
+        })
+        document.querySelector(".father").addEventListener("click", function(){
+            alert("father")
+        })
+        document.querySelector(".son").addEventListener("click", function(){
+            alert("son")
+        })
+    </script>
+```
+
+## 阻止冒泡
+把时间限制在当前元素内
+```javascript
+事件对象.stopPropagation()
+```
+**实例**
+```javascript
+<div class="father" style="width: 500px; height: 250px; background-color: pink;">
+        <div class="son" style="width: 100px; height: 100px; background-color: blue;"></div>
+    </div>
+    <script>
+        document.addEventListener("click", function(){
+            alert("grandfather")
+        })
+        document.querySelector(".father").addEventListener("click", function(){
+            alert("father")
+        })
+        document.querySelector(".son").addEventListener("click", function(e){
+            alert("son")
+            e.stopPropagation()
+        })
+    </script>
+```
+
+## 事件解绑
+`匿名函数无法接触事件绑定`
+```javascript
+对象元素.removeEventListener("事件类型",执行函数)
+```
+
+## 事件委托
+利用`事件冒泡`实现，给`父元素注册事件`,触发子元素时，可以冒泡到父元素身上，从而触发父元素事件
+优点：减少注册次数，提高性能
+**实现**
+```javascript
+// 获取指定子元素
+事件对象.target.tagName
+
+// 例子
+// 获取的子元素要全部大写————"LI"
+<div>
+        <li class = "pointer">第1个标签</li>
+        <li class = "pointer">第2个标签</li>
+        <li class = "pointer">第3个标签</li>
+        <li class = "pointer">第4个标签</li>
+        <li class = "pointer">第5个标签</li>
+        <p>特殊元素</p>
+    </div>
+
+    <script>
+        const father = document.querySelector("div")
+        father.addEventListener("click",function(e) {
+            if(e.target.tagName === "LI"){
+                e.target.style.color = "red"
+            }
+            
+        })
+
+    </script>
+```
+## 阻止默认行为
+表单提交时，不满足条件时，不发生页面跳转
+```javascript
+e.preventDefault()
+```
+
+## 其他事件
+### 页面加载事件
+外部资源加载完毕时触发的事件
+事件名：`load`
+### 页面滚动事件
+
+### 页面尺寸事件

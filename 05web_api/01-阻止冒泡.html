@@ -1,0 +1,33 @@
+<!--
+ * @FilePath: \Js_practice\05web_api\01-阻止冒泡.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-30 17:22:17
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阻止事件冒泡</title>
+    
+</head>
+<body>
+
+    <div class="father" style="width: 500px; height: 250px; background-color: pink;">
+        <div class="son" style="width: 100px; height: 100px; background-color: blue;"></div>
+    </div>
+    <script>
+        document.addEventListener("click", function(){
+            alert("grandfather")
+        })
+        document.querySelector(".father").addEventListener("click", function(){
+            alert("father")
+        })
+        document.querySelector(".son").addEventListener("click", function(){
+            alert("son")
+        })
+    </script>
+</body>
+</html>

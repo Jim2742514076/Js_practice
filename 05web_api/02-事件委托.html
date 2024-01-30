@@ -1,0 +1,41 @@
+<!--
+ * @FilePath: \Js_practice\05web_api\02-事件委托.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-30 19:28:51
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+    <style>
+        .pointer{
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <li class = "pointer">第1个标签</li>
+        <li class = "pointer">第2个标签</li>
+        <li class = "pointer">第3个标签</li>
+        <li class = "pointer">第4个标签</li>
+        <li class = "pointer">第5个标签</li>
+        <p>特殊元素</p>
+    </div>
+
+    <script>
+        const father = document.querySelector("div")
+        father.addEventListener("click",function(e) {
+            if(e.target.tagName === "LI"){
+                e.target.style.color = "red"
+            }
+            
+        })
+
+    </script>
+</body>
+</html>

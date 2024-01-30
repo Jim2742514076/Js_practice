@@ -1,0 +1,123 @@
+<!--
+ * @FilePath: \Js_practice\04web_api\全选反选案例.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-30 16:33:21
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+      width: 500px;
+      margin: 100px auto;
+      text-align: center;
+    }
+
+    th {
+      background-color: #09c;
+      font: bold 16px "微软雅黑";
+      color: #fff;
+      height: 24px;
+    }
+
+    td {
+      border: 1px solid #d0d0d0;
+      color: #404060;
+      padding: 10px;
+    }
+
+    .allCheck {
+      width: 80px;
+    }
+
+    /* .checked{
+      checked: true;
+    } */
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <th class="allCheck">
+        <input type="checkbox" name="" id="checkAll"> <span class="all">全选</span>
+      </th>
+      <th>商品</th>
+      <th>商家</th>
+      <th>价格</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="check" class="ck">
+      </td>
+      <td>小米手机</td>
+      <td>小米</td>
+      <td>￥1999</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="check" class="ck">
+      </td>
+      <td>小米净水器</td>
+      <td>小米</td>
+      <td>￥4999</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="check" class="ck">
+      </td>
+      <td>小米电视</td>
+      <td>小米</td>
+      <td>￥5999</td>
+    </tr>
+  </table>
+  <script>
+
+    const allCheck = document.querySelector("#checkAll")
+    const cks = document.querySelectorAll(".ck")
+    allCheck.addEventListener("change",function(){
+      // console.log("选中全选")
+      // console.log(this.checked)
+      if(this.checked){
+        for(let i = 0; i < cks.length; i++){
+          cks[i].checked  = true
+        }
+      }else{
+        for(let i = 0; i < cks.length; i++){
+          cks[i].checked  = false
+      }}
+    })
+    
+    for(let i = 0; i<cks.length;i++){
+      cks[i].addEventListener("change",function(){
+        let count = 0
+        for(let i = 0; i < cks.length; i++){
+          if(cks[i].checked){
+            count++
+          }
+        }
+        if(count === cks.length){
+          allCheck.checked = true
+        }else{
+          allCheck.checked = false}
+      })
+    }
+
+  </script>
+</body>
+
+</html>
