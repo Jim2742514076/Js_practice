@@ -1,0 +1,24 @@
+<!--
+ * @FilePath: \Js_practice\05web_api\07-页面时间显示.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-31 19:36:30
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面时间显示</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        const date = new Date()
+        const showTime = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} 
+        ${date.getHours()+1}:${date.getMinutes()}`
+        document.querySelector('div').innerHTML = showTime
+    </script>
+</body>
+</html>

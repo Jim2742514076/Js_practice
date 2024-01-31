@@ -497,6 +497,8 @@ key:用户按下的键盘键的值
 **实现**
 ```javascript
 // 获取指定子元素
+事件对象.target
+// 获取子元素名称
 事件对象.target.tagName
 
 // 例子
@@ -529,8 +531,120 @@ e.preventDefault()
 
 ## 其他事件
 ### 页面加载事件
-外部资源加载完毕时触发的事件
+外部资源加载完毕时触发的事件，当`scrpit`位于`head`标签内部，dom未加载完毕，执行`script`代码无法找到dom元素
 事件名：`load`
+监听页面所有资源加载完毕：给`window`添加`load`事件
+```javascript
+// 等待窗口资源全部加载完毕
+window.addEventListener("load",function(){
+    执行函数
+})
+```
+当初始的HTML文档被完全加载和解析完成之后，DOMContentLoaded事件被触发，而无需等待样式表、图像等完全加载
+事件名：`DOMContentLoaded`
+```javascript
+// 等待窗口资源全部加载完毕
+document.addEventListener("DOMContentLoaded",function(){
+    执行函数
+})
+```
+
 ### 页面滚动事件
+>页面平滑跳动方式
+```css
+<style>
+    html{
+        scrollbehavior:smooth;
+    }
+</style>
+```
+
+滚动条在滚动的时候持续触发的事件，通常给`window`添加滚动事件
+监听某个元素滚动事件，给元素直接增加滚动事件即可
+事件名：`scroll`
+```javascript
+    // 监听整个窗口滚动
+    <script>
+        window.addEventListener("scroll", function(e) {
+            console.log("scroll")
+        })
+    </script>
+```
+#### 页面滚动事件——获取位置
+`scrollLeft`和`scrollTop`属性：被卷去的大小，**值可读写,数值型不带单位**
+**获取HTML**：`document.documentElement`
+`scrollto(x,y)`:将页面滚动到指定坐标
+
 
 ### 页面尺寸事件
+窗口尺寸改变的时候触发的事件`resize`
+```javascript
+window.addEventListener("resize",function(){
+    执行函数
+})
+```
+#### 获取元素宽和高
+获取元素可见宽`clientWidth`和高`clientHeight`,**不包含边框和尺寸**
+```javascript
+<div></div>
+    <script>
+        const div = document.querySelector("div")
+        console.log(div.clientHeight)
+    </script>
+```
+**获取元素宽高**
+获取包含`边框`的宽和高：`offsetWidth`、`offsetHeight`
+**获取定位：**
+距离左右的位置：`offsetLeft`、`offsetTop`
+**子元素获取时要看父元素的定位，如果是相对定位，获取的框高是距离父元素的宽高，绝对定位获取的才是距离顶部的宽高**
+
+
+## 日期对象
+用来表示时间的对象
+### 实例化
+```javascript
+// 获取当前时间
+const data = new Date()
+
+// 获取指定时间
+const data1 = new Date("2022-5-1")
+```
+
+### 日期对象方法
+```javascript
+const date = new Date()
+// 获取年份
+date.getFullYear()
+// 获取月份(0-11)
+date.getMonth()
+// 获取每天
+date.getDate()
+// 获取星期(0-6)
+date.getDay()
+// 获得小时
+date.getHours()
+// 获得分钟
+date.getMinutes()
+// 获得秒
+date.getSecond()
+// 获取当前时间(年-月-日 时-分-秒)
+date.toLocaleString()
+// 获取当前时间(年-月-日)
+date.toLocaleDateString()
+// 获取当前时间(时-分-秒)
+date.toLocaleTimeString()
+```
+
+### 时间戳
+```javascript
+// 时间戳获取
+const date = Date()
+date.getTime()
+
+// 方法二
++new Date()
+
+// 方法三
+// 仅可以返回当前时间戳
+Date.now()
+```

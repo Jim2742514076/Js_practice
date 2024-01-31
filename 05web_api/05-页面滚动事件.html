@@ -1,0 +1,37 @@
+<!--
+ * @FilePath: \Js_practice\05web_api\05-页面滚动事件.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-01-31 10:59:29
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面滚动事件</title>
+    <style>
+        body{
+            height: 2500px;
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 200px;width: 50px;background-color: pink; display: none;"></div>
+    <script>
+        window.addEventListener("scroll", function(e) {
+            // console.log("scroll")
+            const html = document.documentElement.scrollTop
+            console.log(html)
+            if(html>=100){
+                document.querySelector("div").style.display = "block"
+            }else{
+                document.querySelector("div").style.display = "none"
+            }
+        })
+    </script>
+    
+    
+</body>
+</html>
