@@ -1,0 +1,103 @@
+<!--
+ * @FilePath: \Js_practice\06web_api\01-swiper插件使用.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-02-01 14:15:49
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>swiper插件使用</title>
+    <script src="../js/swiper.js"></script>
+    <link rel="stylesheet" href="../css/swiper.css">
+    <script src="../js/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+</head>
+<body>
+    <style>
+      .box{
+            position: relative;
+            width: 800px;
+            height: 400px;
+            background-color: pink;
+            margin: auto;  
+        }
+        html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    </style>
+    <div class="box">
+        <!-- Swiper -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="../04web_api/images/1.webp" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../04web_api/images/2.webp" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../04web_api/images/3.webp" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../04web_api/images/4.webp" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../04web_api/images/5.webp" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../04web_api/images/6.webp" alt="">
+          </div>
+        </div>
+        <div class="swiper-pagination">hello</div>
+      </div>
+
+  </div>
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      autoplay: {
+    delay: 1000,//1秒切换一次
+      },
+    });
+  </script>
+</body>
+</html>

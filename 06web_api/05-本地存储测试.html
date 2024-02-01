@@ -1,0 +1,35 @@
+<!--
+ * @FilePath: \Js_practice\06web_api\05-本地存储测试.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-02-01 21:16:18
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地存储</title>
+</head>
+<body>
+    <script>
+        const obj1 = {
+                name:"pink",
+                age:18,
+                gender:"man"
+            }
+        const obj2 = {
+                name:"bule",
+                age:18,
+                gender:"man"
+            }
+        const arr = []
+        arr.push(obj1)
+        arr.push(obj2)
+        console.log(arr)
+        localStorage.setItem("arr",JSON.stringify(arr))
+        console.log(localStorage.getItem("arr"))
+    </script>
+</body>
+</html>

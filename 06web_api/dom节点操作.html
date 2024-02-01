@@ -1,0 +1,70 @@
+<!--
+ * @FilePath: \Js_practice\06web_api\dom节点操作.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-02-01 11:06:59
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom节点操作</title>
+</head>
+<body>
+    <div>测试标签</div>
+    <div class="grandfather">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <script>
+        // dom节点获取
+        const div = document.querySelector(".grandfather");
+        // console.log(div)
+
+        // // 父节点获取
+        // const body = div.parentNode
+        // console.log(body)
+
+        // // 子节点获取(获取ul标签)
+        // const ul = div.children
+        // // console.log(ul[1].nodeName)
+        // console.log(ul[0])
+
+        // // 兄弟节点获取
+        // // 获取第一个ul标签下的第二个li标签
+        // const li1 = ul[0].children[1]
+        // console.log(li1)
+        // // 获取上一个兄弟标签
+        // const li0 = li1.previousElementSibling
+        // // 获取下一个兄弟标签
+        // const li2 = li1.nextElementSibling
+        // console.log(li0)
+        // console.log(li2)
+        //
+
+        // 新增节点
+        // 在第一个ul标签下新增一个li标签
+        const new_li = document.createElement("li")
+        new_li.innerHTML = "我是新增加的li标签"
+        div.children[0].appendChild(new_li)
+        // 指定位置插入标签
+        const new_li_insert = document.createElement("li")
+        new_li_insert.innerHTML = '我是插入的li标签'
+        div.children[0].insertBefore(new_li_insert,div.children[0].children[0])
+    </script>
+</body>
+</html>

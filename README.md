@@ -436,6 +436,12 @@ key:用户按下的键盘键的值
 指代函数内部的变量`this`，表示函数运行时所处的环境
 **调用规则**：谁调用函数，this指向谁
 
+>this与event区别
+
+1、event是鼠标事件对象，代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。
+2、this指向的是调用事件的元素对象。
+`event.target`与`this`指向对象一致
+
 ## 回调函数
 将函数A作为参数传递给函数B，称为函数A为回调函数
 
@@ -661,4 +667,170 @@ dom树中的每一个内容都称为节点
 // parentNone属性
 // 返回最近一级的父节点，找不到返回null
 子元素.parentNode
+```
+
+#### 子节点查找
+获取所有子节点，包括文本节点、注释节点
+```javascript
+// children属性
+// 获得所有元素节点
+// 返回伪数组
+父元素.children
+```
+
+#### 兄弟关系查找
+`nextElementSibling`:下一个兄弟节点
+`previousElementSibling`:上一个兄弟节点
+
+
+#### 实例
+```javascript
+    <div class="grandfather">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <script>
+        // dom节点获取
+        const div = document.querySelector(".grandfather")
+        console.log(div)
+
+        // 父节点获取
+        const body = div.parentNode
+        console.log(body)
+
+        // 子节点获取(获取ul标签)
+        const ul = div.children
+        // console.log(ul[1].nodeName)
+        console.log(ul[0])
+
+        // 兄弟节点获取
+        // 获取第一个ul标签下的第二个li标签
+        const li1 = ul[0].children[1]
+        console.log(li1)
+        // 获取上一个兄弟标签
+        const li0 = li1.previousElementSibling
+        // 获取下一个兄弟标签
+        const li2 = li1.nextElementSibling
+        console.log(li0)
+        console.log(li2)
+        
+    </script>
+```
+### 增加节点
+1、创建一个新的节点:`document.createElement`
+2、将新创建的节点放到指定元素的内部
+**尾部追加：**`元素名.appendChild(新元素)`
+**指定位置添加：**`元素名.insertBefore(新元素,添加位置)`
+`添加位置的获取要通过获取元素名的子元素 最前面：ui.children[0]`
+```javascript
+const div = document.createElement("div")
+// 新增节点
+// 在第一个ul标签下新增一个li标签
+const new_li = document.createElement("li")
+new_li.innerHTML = "我是新增加的li标签"
+div.children[0].appendChild(new_li)
+// 指定位置插入标签
+const new_li_insert = document.createElement("li")
+new_li_insert.innerHTML = '我是插入的li标签'
+div.children[0].insertBefore(new_li_insert,div.children[0].children[0])
+```
+
+### 克隆节点
+`元素名.cloneNode(布尔值)`
+true：深度克隆，子孙节点都克隆
+false：只克隆子节点
+>在轮播图中克隆后追加到后面
+```javascript
+const div = document.querySelector(".grandfather")
+div.cloneNode(true)
+```
+
+### 删除节点
+`父元素.removeChild(要删除的元素)`
+只有父元素存在，才可进行删除
+
+## M端事件
+移动端事件——`touch`
+```javascript
+// 手指触摸dom元素触发
+touchstart
+// 手指在dom元素上滑动触发
+touchmove
+// 手指在dom元素上移开触发
+touchend
+```
+
+## 插件使用
+[swiper插件](https://www.swiper.com.cn/)
+
+## BOM
+浏览器对象模型
+
+### 延时函数
+`setTimeout(执行函数,时间)`
+只执行一次
+```javascript
+// 设置延时函数
+let timeId = setTimeout(function(){
+    alert("延时函数")
+},1000)
+// 清除延时函数
+clearTimeout(timeId)
+```
+
+### location对象
+对`location.href`进行赋值，可以实现页面跳转
+```javascript
+location.href = "http://www.baidu.com"
+```
+`location.search`可以获得网址"?"后的内容
+`location.hash`可以获得网址"#"后的内容
+`location.reload()`页面刷新
+`location.reload(true)`强制页面刷新
+
+### history对象
+`history.back()`:页面后退
+`history.forward()`:页面前进
+`history.go(-1)`:后退
+`history.go(1)`:前进
+
+
+## 本地存储
+### localStorage
+以对象的方式进行操作，**localStorage的存储数据均会转为字符串存储**
+存储数据：`localStorage.setItem(key,value)`
+获取数据：`localStorage.getItem(key)`
+删除数据：`locakStorage.removeItem(key)`
+修改数据：同存储数据
+
+### 存储复杂数据
+将复杂数据类型转换为JSON字符串存储到本地
+`JSON.stringify(复杂数据类型)`
+```javascript
+const  obj = {
+    name:"pink",
+    age:18,
+    gender:"man"
+}
+localStorage.setItem(JSON.stringify(obj))
+```
+
+### 取用复杂数据
+将本地存储的JSON字符串转换为对象
+`JSON.parse(取用对象)`
+```javascript
+const obj = localStorage.getItem("obj")
+const objUse = JSON.parse(obj)
 ```

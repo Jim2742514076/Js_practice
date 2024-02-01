@@ -1,0 +1,33 @@
+<!--
+ * @FilePath: \Js_practice\06web_api\04-页面自动跳转.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-02-01 19:53:09
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面自动跳转</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        const div = document.querySelector("div")
+        let second = 5
+        let timeId = setInterval(() => {
+            // alert("Second")
+            if(second >0){
+                second --
+                div.innerHTML = `${second}s后页面跳转`
+            }else{
+                location.href = "https://www.bilibili.com/"
+            }
+        }, 1000);   
+       
+        
+    </script>
+</body>
+</html>

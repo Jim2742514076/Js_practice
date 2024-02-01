@@ -1,0 +1,24 @@
+<!--
+ * @FilePath: \Js_practice\06web_api\03-延时函数.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-02-01 17:13:40
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延时函数</title>
+</head>
+<body>
+    <div style="width: 200px;height: 500px;background-color: skyblue;"></div>
+    <script>
+        const div = document.querySelector("div")
+        let timeId = setTimeout(function() {
+            div.style.backgroundColor = "red"
+        },2000)
+    </script>
+</body>
+</html>
