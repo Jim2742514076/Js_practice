@@ -834,3 +834,31 @@ localStorage.setItem(JSON.stringify(obj))
 const obj = localStorage.getItem("obj")
 const objUse = JSON.parse(obj)
 ```
+>在分支语句和循环语句中声明的变量，只能在分支语句中调用，无法在分支外调用
+```javascript
+const out = 1
+if(true){
+    const out = 2
+}
+console.log(out)
+// 输出结果是1
+```
+
+### map 与 join
+`map()`:有返回值，可以遍历列表，并返回索引
+**主要用于数组与数组之间的映射**，可以拼接对应的数组元素
+```javascript
+const arr = ["red", "green", "yellow"]
+const new_arr = arr.map(function(ele,index) {
+    console.log(ele)
+    console.log(index)
+    return ele + "颜色"
+})
+console.log(new_arr)
+```
+`join()`：将数组元素拼接在一起，**可以传递分割参数,默认是逗号分隔**
+```javascript
+const arr = ["red", "green", "yellow"]
+const new_arr = arr.join(" ")
+console.log(new_arr)
+```

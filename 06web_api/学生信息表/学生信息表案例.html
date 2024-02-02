@@ -61,11 +61,23 @@
   </table>
   <script>
 
-    // dom实现
+    // 本地存储实现
     let stuId = 0
     const tbody = document.querySelector("tbody")
     const form = document.querySelector('form.info')
+    const arr = []
 
+    const renderObj = JSON.parse(localStorage.getItem('obj'))
+    if (renderObj){
+      for(let i = 0; i < renderObj.length; i++) {
+        arr.push(renderObj[i])
+      }
+      stuId = +renderObj[renderObj.length - 1].stuId + 1
+      storageRender(renderObj)
+    }else{
+      stuId = 0
+    }
+    // console.log(stuId)
     // 数据添加
     form.addEventListener('submit',function(event) {
       // 阻止默认提交
@@ -84,37 +96,125 @@
         "salary":salary,
         "city":city
       }
-      // arr.push(obj)
-      // console.log(arr)
-      domRender(obj)
-      this.reset()
-      stuId++
+      
+      // 判断输入框是否赋值
+      const input_form = document.querySelectorAll("[name]")
+      // console.log(input_form)
+      let count = 1
+      for(let i = 0; i < input_form.length; i++){
+        if(input_form[i].value){
+          count ++
+        }
+      }
+      
+      if(count === input_form.length){
+          arr.push(obj)
+          localStorage.setItem("obj", JSON.stringify(arr))
+          // console.log(arr)
+          const renderObj = JSON.parse(localStorage.getItem("obj"))
+          // 清空表格
+          tbody.innerHTML = ""
+          storageRender(renderObj)
+          // console.log(renderObj)
+          this.reset()
+          stuId++
+      }else {
+        alert("error")
+      }
 
     })
 
-    function domRender(obj) {
-      const tr = document.createElement("tr")
-        tr.innerHTML = `
-          <td>${obj.stuId}</td>
-          <td>${obj.uname}</td>
-          <td>${obj.age}</td>
-          <td>${obj.gender}</td>
-          <td>${obj.salary}</td>
-          <td>${obj.city}</td>
+    function storageRender(obj) {
+      for(let i=0;i<obj.length;i++) {
+        const tr = document.createElement("tr")
+            tr.innerHTML = `
+          <td>${obj[i].stuId}</td>
+          <td>${obj[i].uname}</td>
+          <td>${obj[i].age}</td>
+          <td>${obj[i].gender}</td>
+          <td>${obj[i].salary}</td>
+          <td>${obj[i].city}</td>
           <td>
             <a href="javascript:" data-id:${stuId}>删除</a>
           </td>
         `
       tbody.appendChild(tr)
-    }
-
-
-    // 数据删除
-    tbody.addEventListener("click",function(e){
-      if(e.target.tagName === "A"){
-        tbody.removeChild(e.target.parentNode.parentNode)
       }
+    }
+    
+    tbody.addEventListener("click",function(e) {
+      if(e.target.tagName == "A"){
+        // alert("e")
+        // console.log(e.target.parentNode.parentNode.children[0].innerText)
+        const stuId = +e.target.parentNode.parentNode.children[0].innerText
+        // console.log(stuId)
+        for(let i=0; i<arr.length; i++){
+          if(arr[i].stuId === stuId){
+            arr.splice(i, 1)
+          }
+        }
+        localStorage.setItem("obj", JSON.stringify(arr))
+        const renderObj = JSON.parse(localStorage.getItem("obj"))
+        // 清空表格
+        tbody.innerHTML = ""
+        storageRender(renderObj)
+      }
+      // console.log(stuId)
     })
+    // // dom实现
+    // let stuId = 0
+    // const tbody = document.querySelector("tbody")
+    // const form = document.querySelector('form.info')
+
+    // // 数据添加
+    // form.addEventListener('submit',function(event) {
+    //   // 阻止默认提交
+    //   event.preventDefault()
+    //   // const stuId = arr.length + 1
+    //   const uname = document.querySelector(".uname").value
+    //   const age = document.querySelector(".age").value
+    //   const gender = document.querySelector(".gender").value
+    //   const salary = document.querySelector(".salary").value
+    //   const city = document.querySelector(".city").value
+    //   const obj = {
+    //     "stuId":stuId,
+    //     "uname":uname,
+    //     "age":age,
+    //     "gender":gender,
+    //     "salary":salary,
+    //     "city":city
+    //   }
+    //   // arr.push(obj)
+    //   // console.log(arr)
+    //   domRender(obj)
+    //   this.reset()
+    //   stuId++
+
+    // })
+
+    // function domRender(obj) {
+    //   const tr = document.createElement("tr")
+    //     tr.innerHTML = `
+    //       <td>${obj.stuId}</td>
+    //       <td>${obj.uname}</td>
+    //       <td>${obj.age}</td>
+    //       <td>${obj.gender}</td>
+    //       <td>${obj.salary}</td>
+    //       <td>${obj.city}</td>
+    //       <td>
+    //         <a href="javascript:" data-id:${stuId}>删除</a>
+    //       </td>
+    //     `
+    //   tbody.appendChild(tr)
+    // }
+
+
+    // // 数据删除
+    // tbody.addEventListener("click",function(e){
+    //   if(e.target.tagName === "A"){
+    //     tbody.removeChild(e.target.parentNode.parentNode)
+    //   }
+    // })
 
 
 

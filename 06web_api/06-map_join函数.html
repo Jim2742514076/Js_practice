@@ -1,0 +1,26 @@
+<!--
+ * @FilePath: \Js_practice\06web_api\06-map_join函数.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-02-02 11:42:31
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map_join函数</title>
+</head>
+<body>
+    <script>
+        const arr = ["red", "green", "yellow"]
+        const new_arr = arr.map(function(ele,index) {
+            console.log(ele)
+            console.log(index)
+            return ele + "颜色"
+        })
+        console.log(new_arr)
+    </script>
+</body>
+</html>
