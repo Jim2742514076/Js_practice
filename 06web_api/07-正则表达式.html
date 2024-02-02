@@ -1,0 +1,55 @@
+<!--
+ * @FilePath: \Js_practice\06web_api\07-正则表达式.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-02-02 15:15:52
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+</head>
+<body>
+    <style>
+        div.input{
+            margin: 60px 500px;
+        }
+        .right{
+            color: green;
+        }
+        .wrong{ 
+            color: red;
+        }
+    </style>
+    <div class = "input">
+        <input type="text" name="" id="" class="">
+        <span class=""></span>
+    </div>
+
+    
+    <script>
+        const input = document.querySelector('input')
+        input.addEventListener('blur', function(event) {
+            const value = this.value
+            const span = document.querySelector('span')
+            // console.log(value)
+            // 创建qq正则规则
+            const reObj = /^[1-9][0-9]{4,}/
+            if (reObj.test(value)) {
+                span.className = "right"
+                span.innerHTML = "符合规则"
+            }else{
+                span.className = "wrong"
+                span.innerHTML = "不符合规则"
+            }
+        });
+
+
+    </script>
+    
+    
+</body>
+</html>

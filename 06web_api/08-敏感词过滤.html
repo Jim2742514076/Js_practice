@@ -1,0 +1,35 @@
+<!--
+ * @FilePath: \Js_practice\06web_api\08-敏感词过滤.html
+ * @Software: vscode
+ * @Author: 万锦
+ * @Date: 2024-02-02 15:47:48
+ * @email: 2742514076@qq.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>敏感词过滤</title>
+</head>
+<body>
+    <div>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <span>
+            <button>敏感词过滤</button>
+        </span>
+    </div>
+    <div class="show"></div>
+    <script>
+        const btn = document.querySelector("button")
+        btn.addEventListener("click",function(e) {
+            const reObj =  /几把/
+            const  strValue = document.querySelector("textarea").value
+            const result = strValue.replace(reObj, "**")
+            const show = document.querySelector(".show")
+            show.innerHTML = result
+        })
+    </script>
+    
+</body>
+</html>

@@ -345,6 +345,18 @@ bgColor.backgroundColor = "pink"
 </script>
 ```
 #### 通过classList操作css
+通过`classList`操作类控制css：对类名进行追加或者删除，保障原始类名存在
+```javascript
+// 追加类
+元素.classList.add("类名")
+// 删除类
+元素.classList.remove("类名")
+// 切换类
+元素.classList.toggle("类名")
+// 判断是否存在类，返回布尔值
+元素.classList.contains("类名")
+```
+
 ![Alt text](./md/classlist操作css.png)
 
 ### 操作表单属性
@@ -861,4 +873,39 @@ console.log(new_arr)
 const arr = ["red", "green", "yellow"]
 const new_arr = arr.join(" ")
 console.log(new_arr)
+```
+
+## 正则表达式
+用于表达验证，敏感词替换
+1、定义规则；2、定位查找
+```javascript
+const reObj = new /正则/
+const testStr = "正则表达式"
+// 是否匹配,返回布尔值
+reObj.test(testStr)
+// 返回符合规范的字符串数组
+reObj.exec(testStr)
+```
+### 元字符
+**边界符：** 位置的开头与结尾，`^`开头边界符，`$`结尾边界符
+**量词：** 重复次数，`*`重复0次或多次，`+`重复1次或多次，`?`重复0次或1次，`{n}`重复n次，`{n,}`重复n次或多次，`{n,m}`重复n到m次
+**字符类：** 
+- `[]`匹配字符集合：匹配其中的任一一个字符，在中括号里的`-`用于匹配范围：`a-z`，中括号里的最前面嘉`^`表示取反
+- `.`表示匹配换行符以外的其他任一字符
+- 预定义:`\d`匹配0-9，`\D`匹配非0-9，`\w`匹配数字、字母、下划线，`\W`匹配非数字、字母、下划线，`\s`匹配空格，`\S`匹配非空格
+
+### 修饰符
+不区分大小写,在正则表达式后面增加`i`
+```javascript
+const reObj =  /正则/i
+const testStr = "正则表达式"
+```
+全局查找，在正则表达式后面增加`g`
+```javascript
+const reObj =  /正则/g
+const testStr = "正则表达式"
+```
+替换：`replace()`
+```javascript
+字符串.replace(reObj,替换字符)
 ```
