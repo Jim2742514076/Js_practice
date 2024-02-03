@@ -1219,7 +1219,24 @@
   </div>
 
   <script>
-
+      const username = localStorage.getItem('username')
+      // alert(username)
+      const login = document.querySelector('.xtx_navs').children[0].children[0]
+      // console.log(login.innerHTML)
+      const register = document.querySelector('.xtx_navs').children[1].children[0]
+      if(username){
+        login.innerHTML = username
+        register.innerHTML = "退出登录"
+        if(login.innerHTML !== "请先登录"){
+          login.href = '个人信息管理.html'
+        }
+        if(register.innerHTML !== "退出登录"){
+          login.href = 'index.html'
+          login.innerHTML = "请先登录"
+          register.innerHTML = "免费注册"
+      }
+      }
+      
 
   </script>
 </body>

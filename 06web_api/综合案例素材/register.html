@@ -100,7 +100,7 @@
       <!-- 卡片 -->
       <div class="xtx-card">
         <h3>新用户注册</h3>
-        <form class="xtx-form">
+        <form class="xtx-form" action="index.html">
           <div data-prop="username" class="xtx-form-item">
             <span class="iconfont icon-zhanghao"></span>
             <input name="username" type="text" placeholder="设置用户名称">
@@ -342,27 +342,29 @@
       //   event.preventDefault()
       // }
       // event.preventDefault()
-      
-      // const registerUser = {}
-      // const userArr = []
-      // if(usernameComfirm()&&passwordComfirm()&&phoneComfirm()
-      // &&codeInputComfirm()&&passwordAgain()){
+      // event.preventDefault()
+      let registerUser = {}
+      let userArr = []
+      if(usernameComfirm()&&passwordComfirm()&&phoneComfirm()
+      &&codeInputComfirm()&&passwordAgain()){
       //   // alert("e")
-      //   registerUser = {
-      //   "username":username.value,
-      //   "password":password.value,
-      //   "phone":phone.value
-      // }
-      // }
-      // if(localStorage.getItem("userArr")){
-      //   userArr = JSON.parse(localStorage.getItem("userArr"))
-      // }else{
-      //   userArr = []
-      // }
-      // userArr.push(registerUser)
-      // console.log(userArr)
+        registerUser = {
+        username:username.value,
+        password:password.value,
+        phone:phone.value,
+      }
+      // console.log(registerUser)
+      }
+      
+      if(localStorage.getItem("userArr")){
+        userArr = JSON.parse(localStorage.getItem("userArr"))
+      }else{
+        userArr = []
+      }
+      userArr.push(registerUser)
+      console.log(userArr)
       // alert("测试")
-      // localStorage.setItem("userArr",JSON.stringify(userArr))
+      localStorage.setItem("userArr",JSON.stringify(userArr))
 
       if(!usernameComfirm()) event.preventDefault()
       if(!passwordComfirm()) event.preventDefault()
